@@ -1,3 +1,3 @@
-module multiplier32F_tb();
+module multiplier32FP_tb();
 
 endmodule

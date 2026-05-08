@@ -1,11 +1,36 @@
 # Multiplicador em Ponto Flutuante de 32 bits (IEEE 754)
 
 ## Descrição do Projeto
-O objetivo deste projeto é desenvolver um multiplicador em ponto flutuante de 32 bits utilizando o padrão IEEE 754. O projeto conta com saída registrada e tem como meta a geração de um hardware que atinja a **máxima frequência de operação** possível. 
+O objetivo deste projeto é desenvolver um multiplicador em ponto flutuante de 32 bits utilizando o padrão IEEE 754. O projeto conta com saída registrada e tem como meta a geração de um hardware que atinja a **máxima frequência de operação** possível.
 
-O circuito manipula números positivos e negativos e implementa o tratamento e a identificação de diversos casos especiais previstos na norma.
-
----
+1) positivo/negativo infinito (infinit_o): o expoente contém um padrão de bits reservado
+11111111, a fração (mantissa) contém somente zeros, e o bit de sinal é 0 ou 1;
+2) not a number (nan_o): o expoente contém um padrão de bits reservado 11111111, a
+fração (mantissa) é diferente de zero, e o bit de sinal é 0 ou 1. Neste caso, ambos
+operandos devem ser testados, a multiplicação não deve ser realizada e esta flag deve
+ir para ‘1’. Neste caso, o valor na saída deve ser 0x00000000;
+3) multiplicar números classificados como “zero sujo”. Uma representação chamada de
+“zero sujo”, não-normalizada, permite representar números no intervalo entre 0 e o
+primeiro número representável na forma normalizada (1,0 x 2-126). O bit de sinal pode
+ser 0 ou 1 e o expoente contém o padrão de bits 00000000. A fração contém o padrão
+de bits real para a magnitude do número, em vez da mantissa. Deste modo, não existe
+nenhum 1 escondido neste formato. Números denormalizados, portanto, permitem que
+os números em ponto flutuante atinjam valores muito menores, sacrificando a
+quantidade de bits no significando;
+4) arredondamento: round toward zero (arredonda em direção a zero): neste caso os bits
+que estão a mais são desprezados.
+5) overflow (overflow_o): ocorre quando o expoente resultante excede o valor máximo
+permitido para este número normalizado. Neste caso, o valor na saída deve ser
+0x7FFFFFFF;
+6) underflow (underflow_o): devolve um número menor que o permitido normalizado. O
+underflow ocorre quando uma operação é executada e retorna um valor que é menor
+que o menor número não zero.
+a. Sobre underflow: No padrão IEEE 754 precisão simples isto significa um valor
+que tem a magnitude (valor absoluto) menor que 1,0 x 1-149 (número
+denormalizado). Normalmente quando um número chega a este patamar de
+magnitude ele é arredondado para zero, o que pode não fazer muita diferença
+em uma adição, mas tem um grande efeito na multiplicação. Neste caso, o valor
+na saída deve ser 0x00000000;
 
 ## Casos Especiais Tratados
 

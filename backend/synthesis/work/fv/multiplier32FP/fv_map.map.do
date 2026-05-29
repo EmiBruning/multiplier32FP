@@ -1,0 +1,200 @@
+
+//input ports
+add mapped point clk clk -type PI PI
+add mapped point rst_n rst_n -type PI PI
+add mapped point a_i[31] a_i[31] -type PI PI
+add mapped point a_i[30] a_i[30] -type PI PI
+add mapped point a_i[29] a_i[29] -type PI PI
+add mapped point a_i[28] a_i[28] -type PI PI
+add mapped point a_i[27] a_i[27] -type PI PI
+add mapped point a_i[26] a_i[26] -type PI PI
+add mapped point a_i[25] a_i[25] -type PI PI
+add mapped point a_i[24] a_i[24] -type PI PI
+add mapped point a_i[23] a_i[23] -type PI PI
+add mapped point a_i[22] a_i[22] -type PI PI
+add mapped point a_i[21] a_i[21] -type PI PI
+add mapped point a_i[20] a_i[20] -type PI PI
+add mapped point a_i[19] a_i[19] -type PI PI
+add mapped point a_i[18] a_i[18] -type PI PI
+add mapped point a_i[17] a_i[17] -type PI PI
+add mapped point a_i[16] a_i[16] -type PI PI
+add mapped point a_i[15] a_i[15] -type PI PI
+add mapped point a_i[14] a_i[14] -type PI PI
+add mapped point a_i[13] a_i[13] -type PI PI
+add mapped point a_i[12] a_i[12] -type PI PI
+add mapped point a_i[11] a_i[11] -type PI PI
+add mapped point a_i[10] a_i[10] -type PI PI
+add mapped point a_i[9] a_i[9] -type PI PI
+add mapped point a_i[8] a_i[8] -type PI PI
+add mapped point a_i[7] a_i[7] -type PI PI
+add mapped point a_i[6] a_i[6] -type PI PI
+add mapped point a_i[5] a_i[5] -type PI PI
+add mapped point a_i[4] a_i[4] -type PI PI
+add mapped point a_i[3] a_i[3] -type PI PI
+add mapped point a_i[2] a_i[2] -type PI PI
+add mapped point a_i[1] a_i[1] -type PI PI
+add mapped point a_i[0] a_i[0] -type PI PI
+add mapped point b_i[31] b_i[31] -type PI PI
+add mapped point b_i[30] b_i[30] -type PI PI
+add mapped point b_i[29] b_i[29] -type PI PI
+add mapped point b_i[28] b_i[28] -type PI PI
+add mapped point b_i[27] b_i[27] -type PI PI
+add mapped point b_i[26] b_i[26] -type PI PI
+add mapped point b_i[25] b_i[25] -type PI PI
+add mapped point b_i[24] b_i[24] -type PI PI
+add mapped point b_i[23] b_i[23] -type PI PI
+add mapped point b_i[22] b_i[22] -type PI PI
+add mapped point b_i[21] b_i[21] -type PI PI
+add mapped point b_i[20] b_i[20] -type PI PI
+add mapped point b_i[19] b_i[19] -type PI PI
+add mapped point b_i[18] b_i[18] -type PI PI
+add mapped point b_i[17] b_i[17] -type PI PI
+add mapped point b_i[16] b_i[16] -type PI PI
+add mapped point b_i[15] b_i[15] -type PI PI
+add mapped point b_i[14] b_i[14] -type PI PI
+add mapped point b_i[13] b_i[13] -type PI PI
+add mapped point b_i[12] b_i[12] -type PI PI
+add mapped point b_i[11] b_i[11] -type PI PI
+add mapped point b_i[10] b_i[10] -type PI PI
+add mapped point b_i[9] b_i[9] -type PI PI
+add mapped point b_i[8] b_i[8] -type PI PI
+add mapped point b_i[7] b_i[7] -type PI PI
+add mapped point b_i[6] b_i[6] -type PI PI
+add mapped point b_i[5] b_i[5] -type PI PI
+add mapped point b_i[4] b_i[4] -type PI PI
+add mapped point b_i[3] b_i[3] -type PI PI
+add mapped point b_i[2] b_i[2] -type PI PI
+add mapped point b_i[1] b_i[1] -type PI PI
+add mapped point b_i[0] b_i[0] -type PI PI
+add mapped point start_i start_i -type PI PI
+
+//output ports
+add mapped point product_o[31] product_o[31] -type PO PO
+add mapped point product_o[30] product_o[30] -type PO PO
+add mapped point product_o[29] product_o[29] -type PO PO
+add mapped point product_o[28] product_o[28] -type PO PO
+add mapped point product_o[27] product_o[27] -type PO PO
+add mapped point product_o[26] product_o[26] -type PO PO
+add mapped point product_o[25] product_o[25] -type PO PO
+add mapped point product_o[24] product_o[24] -type PO PO
+add mapped point product_o[23] product_o[23] -type PO PO
+add mapped point product_o[22] product_o[22] -type PO PO
+add mapped point product_o[21] product_o[21] -type PO PO
+add mapped point product_o[20] product_o[20] -type PO PO
+add mapped point product_o[19] product_o[19] -type PO PO
+add mapped point product_o[18] product_o[18] -type PO PO
+add mapped point product_o[17] product_o[17] -type PO PO
+add mapped point product_o[16] product_o[16] -type PO PO
+add mapped point product_o[15] product_o[15] -type PO PO
+add mapped point product_o[14] product_o[14] -type PO PO
+add mapped point product_o[13] product_o[13] -type PO PO
+add mapped point product_o[12] product_o[12] -type PO PO
+add mapped point product_o[11] product_o[11] -type PO PO
+add mapped point product_o[10] product_o[10] -type PO PO
+add mapped point product_o[9] product_o[9] -type PO PO
+add mapped point product_o[8] product_o[8] -type PO PO
+add mapped point product_o[7] product_o[7] -type PO PO
+add mapped point product_o[6] product_o[6] -type PO PO
+add mapped point product_o[5] product_o[5] -type PO PO
+add mapped point product_o[4] product_o[4] -type PO PO
+add mapped point product_o[3] product_o[3] -type PO PO
+add mapped point product_o[2] product_o[2] -type PO PO
+add mapped point product_o[1] product_o[1] -type PO PO
+add mapped point product_o[0] product_o[0] -type PO PO
+add mapped point done_o done_o -type PO PO
+add mapped point nan_o nan_o -type PO PO
+add mapped point infinit_o infinit_o -type PO PO
+add mapped point overflow_o overflow_o -type PO PO
+add mapped point underflow_o underflow_o -type PO PO
+
+//inout ports
+
+
+
+
+//Sequential Pins
+add mapped point product_o_reg[22]/Q product_o_reg[22]/Q -type DFF DFF
+add mapped point product_o_reg[21]/Q product_o_reg[21]/Q -type DFF DFF
+add mapped point product_o_reg[16]/Q product_o_reg[16]/Q -type DFF DFF
+add mapped point product_o_reg[15]/Q product_o_reg[15]/Q -type DFF DFF
+add mapped point product_o_reg[0]/Q product_o_reg[0]/Q -type DFF DFF
+add mapped point product_o_reg[14]/Q product_o_reg[14]/Q -type DFF DFF
+add mapped point product_o_reg[13]/Q product_o_reg[13]/Q -type DFF DFF
+add mapped point product_o_reg[12]/Q product_o_reg[12]/Q -type DFF DFF
+add mapped point product_o_reg[11]/Q product_o_reg[11]/Q -type DFF DFF
+add mapped point product_o_reg[10]/Q product_o_reg[10]/Q -type DFF DFF
+add mapped point product_o_reg[9]/Q product_o_reg[9]/Q -type DFF DFF
+add mapped point product_o_reg[20]/Q product_o_reg[20]/Q -type DFF DFF
+add mapped point product_o_reg[19]/Q product_o_reg[19]/Q -type DFF DFF
+add mapped point product_o_reg[8]/Q product_o_reg[8]/Q -type DFF DFF
+add mapped point product_o_reg[7]/Q product_o_reg[7]/Q -type DFF DFF
+add mapped point product_o_reg[6]/Q product_o_reg[6]/Q -type DFF DFF
+add mapped point product_o_reg[5]/Q product_o_reg[5]/Q -type DFF DFF
+add mapped point product_o_reg[18]/Q product_o_reg[18]/Q -type DFF DFF
+add mapped point product_o_reg[4]/Q product_o_reg[4]/Q -type DFF DFF
+add mapped point product_o_reg[3]/Q product_o_reg[3]/Q -type DFF DFF
+add mapped point product_o_reg[17]/Q product_o_reg[17]/Q -type DFF DFF
+add mapped point product_o_reg[2]/Q product_o_reg[2]/Q -type DFF DFF
+add mapped point product_o_reg[1]/Q product_o_reg[1]/Q -type DFF DFF
+add mapped point product_o_reg[31]/Q product_o_reg[31]/Q -type DFF DFF
+add mapped point product_o_reg[28]/Q product_o_reg[28]/Q -type DFF DFF
+add mapped point product_o_reg[23]/Q product_o_reg[23]/Q -type DFF DFF
+add mapped point product_o_reg[27]/Q product_o_reg[27]/Q -type DFF DFF
+add mapped point product_o_reg[26]/Q product_o_reg[26]/Q -type DFF DFF
+add mapped point product_o_reg[29]/Q product_o_reg[29]/Q -type DFF DFF
+add mapped point product_o_reg[25]/Q product_o_reg[25]/Q -type DFF DFF
+add mapped point product_o_reg[24]/Q product_o_reg[24]/Q -type DFF DFF
+add mapped point product_o_reg[30]/Q product_o_reg[30]/Q -type DFF DFF
+add mapped point overflow_o_reg/Q overflow_o_reg/Q -type DFF DFF
+add mapped point underflow_o_reg/Q underflow_o_reg/Q -type DFF DFF
+add mapped point s1_man_product_reg[46]/Q s1_man_product_reg[46]/Q -type DFF DFF
+add mapped point s1_man_product_reg[42]/Q s1_man_product_reg[42]/Q -type DFF DFF
+add mapped point s1_man_product_reg[43]/Q s1_man_product_reg[43]/Q -type DFF DFF
+add mapped point s1_man_product_reg[40]/Q s1_man_product_reg[40]/Q -type DFF DFF
+add mapped point s1_man_product_reg[35]/Q s1_man_product_reg[35]/Q -type DFF DFF
+add mapped point s1_man_product_reg[45]/Q s1_man_product_reg[45]/Q -type DFF DFF
+add mapped point s1_man_product_reg[47]/Q s1_man_product_reg[47]/Q -type DFF DFF
+add mapped point s1_man_product_reg[41]/Q s1_man_product_reg[41]/Q -type DFF DFF
+add mapped point s1_man_product_reg[36]/Q s1_man_product_reg[36]/Q -type DFF DFF
+add mapped point s1_man_product_reg[34]/Q s1_man_product_reg[34]/Q -type DFF DFF
+add mapped point s1_man_product_reg[44]/Q s1_man_product_reg[44]/Q -type DFF DFF
+add mapped point s1_man_product_reg[38]/Q s1_man_product_reg[38]/Q -type DFF DFF
+add mapped point s1_man_product_reg[32]/Q s1_man_product_reg[32]/Q -type DFF DFF
+add mapped point s1_man_product_reg[39]/Q s1_man_product_reg[39]/Q -type DFF DFF
+add mapped point s1_man_product_reg[30]/Q s1_man_product_reg[30]/Q -type DFF DFF
+add mapped point s1_man_product_reg[33]/Q s1_man_product_reg[33]/Q -type DFF DFF
+add mapped point s1_man_product_reg[37]/Q s1_man_product_reg[37]/Q -type DFF DFF
+add mapped point s1_man_product_reg[31]/Q s1_man_product_reg[31]/Q -type DFF DFF
+add mapped point s1_man_product_reg[29]/Q s1_man_product_reg[29]/Q -type DFF DFF
+add mapped point s1_man_product_reg[28]/Q s1_man_product_reg[28]/Q -type DFF DFF
+add mapped point s1_man_product_reg[27]/Q s1_man_product_reg[27]/Q -type DFF DFF
+add mapped point s1_man_product_reg[26]/Q s1_man_product_reg[26]/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[7]/Q s1_exp_sum_reg[7]/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[8]/Q s1_exp_sum_reg[8]/Q -type DFF DFF
+add mapped point s1_man_product_reg[25]/Q s1_man_product_reg[25]/Q -type DFF DFF
+add mapped point s1_man_product_reg[24]/Q s1_man_product_reg[24]/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[9]/Q s1_exp_sum_reg[9]/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[6]/Q s1_exp_sum_reg[6]/Q -type DFF DFF
+add mapped point s1_man_product_reg[23]/Q s1_man_product_reg[23]/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[5]/Q s1_exp_sum_reg[5]/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[4]/Q s1_exp_sum_reg[4]/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[3]/Q s1_exp_sum_reg[3]/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[2]/Q s1_exp_sum_reg[2]/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[1]/Q s1_exp_sum_reg[1]/Q -type DFF DFF
+add mapped point infinit_o_reg/Q infinit_o_reg/Q -type DFF DFF
+add mapped point nan_o_reg/Q nan_o_reg/Q -type DFF DFF
+add mapped point s1_exp_sum_reg[0]/Q s1_exp_sum_reg[0]/Q -type DFF DFF
+add mapped point s1_inf_reg/Q s1_inf_reg/Q -type DFF DFF
+add mapped point s1_zero_reg/Q s1_zero_reg/Q -type DFF DFF
+add mapped point s1_nan_reg/Q s1_nan_reg/Q -type DFF DFF
+add mapped point s1_sign_reg/Q s1_sign_reg/Q -type DFF DFF
+add mapped point done_o_reg/Q done_o_reg/Q -type DFF DFF
+add mapped point s1_valid_reg/Q s1_valid_reg/Q -type DFF DFF
+
+
+
+//Black Boxes
+
+
+
+//Empty Modules as Blackboxes

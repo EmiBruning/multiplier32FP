@@ -1,0 +1,86 @@
+*** Message Type: info ***
+When: Fri May 29 07:49:38 AM -03 2026
+SimVision started.
+Version: TOOL:  simvision(64)   23.09-s013
+User: ufsm00291-bruning2023520081
+Host: localhost
+Platform: Linux/x86_64/4.18.0-553.123.1.el8_10.x86_64
+Started: Fri May 29 07:49:38 AM -03 2026
+Command: /home/tools/cadence/installs/XCELIUM2309/tools.lnx86/simvision/bin/64bit/simvision.exe -connect dc:localhost:46913 -64BIT -nocopyright
+Work Directory: /home/ufsm00291/ufsm00291-bruning2023520081/projetos/multiplier32FP/frontend
+ 
+*** Message Type: info ***
+When: Fri May 29 07:49:38 AM -03 2026
+Create browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Fri May 29 07:49:42 AM -03 2026
+Create console window: "Console"
+ 
+*** Message Type: info ***
+When: Fri May 29 07:49:43 AM -03 2026
+Exit Simulator: abnormal
+      Design: Unknown
+   Languages: Unknown
+   Simulator: Unknown
+     Version: Unknown
+        User: Unknown
+        Host: Unknown
+Time Started: Unknown
+  Process ID: Unknown
+   Directory: Unknown
+     Command: Unknown
+
+ 
+*** Message Type: error ***
+When: Fri May 29 07:49:43 AM -03 2026
+Simulator Crashed:
+      Design: Unknown
+   Languages: Unknown
+   Simulator: Unknown
+     Version: Unknown
+        User: Unknown
+        Host: Unknown
+Time Started: Unknown
+  Process ID: Unknown
+   Directory: Unknown
+     Command: Unknown
+      Design: Unknown
+   Languages: Unknown
+   Simulator: Unknown
+     Version: Unknown
+        User: Unknown
+        Host: Unknown
+Time Started: Unknown
+  Process ID: Unknown
+   Directory: Unknown
+     Command: Unknown
+
+Outstanding STRAP Requests:
+        strap::get g . -ck
+        strap::get g . -xu
+        strap::get g . -sa
+ 
+*** Message Type: info ***
+When: Fri May 29 07:49:43 AM -03 2026
+Connect to Simulator
+      Design: Unknown
+   Languages: Unknown
+   Simulator: Unknown
+     Version: Unknown
+        User: Unknown
+        Host: Unknown
+Time Started: Unknown
+  Process ID: Unknown
+   Directory: Unknown
+     Command: Unknown
+
+ 
+*** Message Type: info ***
+When: Fri May 29 07:49:44 AM -03 2026
+Create utility window: "Properties"
+ 
+*** Message Type: info ***
+When: Fri May 29 07:49:54 AM -03 2026
+SimVision Exit.
+ 

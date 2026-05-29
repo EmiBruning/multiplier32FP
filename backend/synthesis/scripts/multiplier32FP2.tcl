@@ -1,5 +1,4 @@
 
-
 # Last update: 2026/03/08
 
 #-----------------------------------------------------------------------------
@@ -53,46 +52,68 @@ report timing -lint
 #-----------------------------------------------------------------------------
 set_db auto_ungroup none ;# (none|both) ungrouping will not be performed
 
-#-----------------------------------------------------------------------------
-# Generic optimization (technology independent)
-#-----------------------------------------------------------------------------
-syn_generic ${HDL_NAME} 
 
 #-----------------------------------------------------------------------------
-# Agressively optimization (area, timing, power) and mapping
+# Frequency Sweep
 #-----------------------------------------------------------------------------
-syn_map ${HDL_NAME} 
-get_db insts .base_cell.name -u ;# List all cell names used in the current design.
+set freq_sweep {
+    "10MHz"  100.0
+}
+
+foreach {freq period} $freq_sweep {
+
+    puts " INICIANDO SÍNTESE PARA: $freq"
+
+    dc::create_clock -name clk -period $period [dc::get_ports clk]
+
+    syn_generic ${HDL_NAME} 
+    syn_map ${HDL_NAME} 
+
+    # report_design_rules > ${RPT_DIR}/${HDL_NAME}_${var}_drc_${freq}.rpt
+    # report_area > ${RPT_DIR}/${HDL_NAME}_${var}_area_${freq}.rpt
+    # report_area -normalize_with_gate NAND2X1 > ${RPT_DIR}/${HDL_NAME}_${var}_area_normalized_${freq}.rpt
+    # report_timing > ${RPT_DIR}/${HDL_NAME}_${var}_timing_${freq}.rpt
+    # report_gates > ${RPT_DIR}/${HDL_NAME}_${var}_gates_${freq}.rpt
+    # report_qor > ${RPT_DIR}/${HDL_NAME}_${var}_qor_${freq}.rpt
+
+    read_stimulus -allow_n_nets -format vcd -file multiplier32FP_50us.vcd
+    set_db power_engine joules ;# <joules or legacy>
+    report_sdb_annotation
+    report_power -unit uW
+    report_power > ${RPT_DIR}/${HDL_NAME}_power_${freq}_x1.rpt
+
+
+    read_stimulus -allow_n_nets -format vcd -file multiplier32FP_50us.vcd
+    set_db power_engine joules ;# <joules or legacy>
+    report_sdb_annotation
+    report_power -unit uW
+    report_power > ${RPT_DIR}/${HDL_NAME}_power_${freq}_x2.rpt
+	
+
+
+}
 
 #-----------------------------------------------------------------------------
-# Preparing and generating output data (reports, verilog netlist)
+# Preparing and generating output data (Verilog Netlist e SDF final)
 #-----------------------------------------------------------------------------
 
-read_stimulus -allow_n_nets -format vcd -file multiplier32FP_500MHz_1000ns.vcd
-set_db power_engine joules ;# <joules or legacy>
-report_sdb_annotation
-report_power -unit uW
-report_power > ${RPT_DIR}/${HDL_NAME}_power_500MHz_x1.rpt
-
-read_stimulus -allow_n_nets -format vcd -file multiplier32FP_500MHz_2000ns.vcd
-set_db power_engine joules ;# <joules or legacy>
-report_sdb_annotation
-report_power -unit uW
-report_power > ${RPT_DIR}/${HDL_NAME}_power_500MHz_x2.rpt
-
-
-#report_power > ${RPT_DIR}/${HDL_NAME}_power_500.rpt
-#report_design_rules > ${RPT_DIR}/${HDL_NAME}_drc.rpt
-#report_area > ${RPT_DIR}/${HDL_NAME}_area_500.rpt ;# report_area -detail 
-#report_area -normalize_with_gate NAND2X1 > ${RPT_DIR}/${HDL_NAME}_area_normalized_500.rpt
-#report_timing > ${RPT_DIR}/${HDL_NAME}_timing_slack.rpt
-#report_gates > ${RPT_DIR}/${HDL_NAME}_gates.rpt
-#report_qor > ${RPT_DIR}/${HDL_NAME}_qor.rpt
 source ../scripts/common/sdf_width_wa.etf
-write_sdf -edge check_edge -nonegchecks -setuphold split -recrem split -version 3.0 -design ${HDL_NAME}  > ${DEV_DIR}/${HDL_NAME}_worst_SPLIT.sdf
+write_sdf -edge check_edge -setuphold split -recrem split -version 3.0 -design ${HDL_NAME} > ${DEV_DIR}/${HDL_NAME}_worst.sdf
 write_hdl ${HDL_NAME} > ${DEV_DIR}/${HDL_NAME}.v
 
 
+if {0} {
 
+#01 
+#report_power -unit uW
 
+# Comandos abril 2025
 
+#Use report_stim_hierarchy command to check design hierarchy
+#report_design_hierarchy
+#Use report_stim_hierarchy command to check stimulus hierarchy
+#report_stim_hierarchy -file ${PROJECT_DIR}/frontend/${DESIGNS}_5kns.vcd -format vcd
+
+#report_sdb_annotation -show_details unasserted
+
+}

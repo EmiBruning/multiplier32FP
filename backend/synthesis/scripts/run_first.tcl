@@ -2,15 +2,15 @@
 # General design dependent variables
 #-----------------------------------------------------------------------------
 export DESIGNS="multiplier32FP" ;# put here the name of current design
-export USER=???? ;# put here YOUR user name at this machine
-export COURSE= ;# put the course name "ufsm00291/" or nothing
+export USER=ufsm00291-bruning2023520081;# put here YOUR user name at this machine
+export COURSE=ufsm00291/ ;# put the course name "UFSM00291/" or nothing
 export PROJECT_DIR=/home/${COURSE}${USER}/projetos/${DESIGNS}
 export BACKEND_DIR=${PROJECT_DIR}/backend
 export TECH_DIR=/home/tools/design_kits/cadence/GPDK045 ;# technology dependent
 export LIB_DIR=${TECH_DIR}/gsclib045_svt_v4.4/gsclib045/timing
 export LEF_DIR=${TECH_DIR}/gsclib045_svt_v4.4/gsclib045/lef
 export HDL_NAME=${DESIGNS}
-export RTL_FILES="${DESIGNS}.vhd" ;# put here all project rtl files 
+export RTL_FILES="${DESIGNS}.v" ;# put here all project rtl files 
 export VLOG_LIST="$BACKEND_DIR/synthesis/deliverables/${DESIGNS}.v  $BACKEND_DIR/synthesis/deliverables/${DESIGNS}_io.v  $BACKEND_DIR/synthesis/deliverables/${DESIGNS}_chip.v"
 #-----------------------------------------------------------------------------
 # Custom Variables to be used in SDC (constraints file)
@@ -19,7 +19,7 @@ export MAIN_CLOCK_NAME=clk
 export MAIN_RST_NAME=rst_n
 export BEST_LIB_OPERATING_CONDITION=PVT_1P32V_0C ;# see LEF files
 export WORST_LIB_OPERATING_CONDITION=PVT_0P9V_125C ;# see LEF files
-export period_clk=100.0  ;# (100 ns = 10 MHz) (10 ns = 100 MHz) (2 ns = 500 MHz) (1 ns = 1 GHz)
+export period_clk=100 ns ;# (100 ns = 10 MHz) (10 ns = 100 MHz) (2 ns = 500 MHz) (1 ns = 1 GHz)
 export clk_uncertainty=0.05 ;# ns (“a guess”)
 export clk_latency=0.10 ;# ns (“a guess”)
 export in_delay=0.30 ;# ns
@@ -68,16 +68,18 @@ module add cdn/innovus/innovus211
 
 
 # Para executar o XCELIUM
-cd ${PROJECT_DIR}/frontend
+#cd ${PROJECT_DIR}/frontend
 
 ### run HDL
-#xrun -clean -64bit -v200x -v93 ${DESIGNS}.vhd Util_package.vhd ${DESIGNS}_tb.vhd -top ${DESIGNS}_tb -access +rwc -gui
+#xrun -clean -64bit -v200x -v93 ${DESIGNS}.v ${DESIGNS}_tb.v -top ${DESIGNS}_tb -access +rwc -gui
 
 ### run netlist (logic synthesis)
-#xrun -clean -64bit -v200x -v93 ${TECH_DIR}/gsclib045_all_v4.4/gsclib045/verilog/slow_vdd1v0_basicCells.v ${PROJECT_DIR}/backend/synthesis/deliverables/${DESIGNS}.v Util_package.vhd ${DESIGNS}_tb.vhd -top ${DESIGNS}_tb -access +rwc -clean -gui
+#xrun -clean -64bit -v200x -v93 ${TECH_DIR}/gsclib045_all_v4.4/gsclib045/verilog/slow_vdd1v0_basicCells.v ${PROJECT_DIR}/backend/synthesis/deliverables/${DESIGNS}.v ${DESIGNS}_tb.v -top ${DESIGNS}_tb -access +rwc -clean -gui
+
+
 
 ### run netlist (logic synthesis) with compiled SDF 
-#xrun -clean -timescale 1ns/10ps -mess -64bit -v200x -v93 -iocondsort ${TECH_DIR}/gsclib045_all_v4.4/gsclib045/verilog/slow_vdd1v0_basicCells.v ${PROJECT_DIR}/backend/synthesis/deliverables/${DESIGNS}.v Util_package.vhd ${DESIGNS}_tb.vhd -top ${DESIGNS}_tb -access +rwc -sdf_cmd_file ${PROJECT_DIR}/frontend/sdf_cmd_file.cmd -clean -gui 
+#xrun -clean -timescale 1ns/10ps -mess -64bit -v200x -v93 -iocondsort ${TECH_DIR}/gsclib045_all_v4.4/gsclib045/verilog/slow_vdd1v0_basicCells.v ${PROJECT_DIR}/backend/synthesis/deliverables/${DESIGNS}.v ${DESIGNS}_tb.v -top ${DESIGNS}_tb -access +rwc -sdf_cmd_file ${PROJECT_DIR}/frontend/sdf_cmd_file.cmd -clean -gui 
 
 
 # Para executar o GENUS
@@ -87,13 +89,14 @@ cd ${PROJECT_DIR}/backend/synthesis/work
 # programa e carrega script para síntese automatizada
 #genus -abort_on_error -lic_startup Genus_Synthesis -lic_startup_options Genus_Physical_Opt -log genus -overwrite -files ${PROJECT_DIR}/backend/synthesis/scripts/${DESIGNS}.tcl
 
+#cd ${PROJECT_DIR}/backend/synthesis/script
 
 # Para executar o INNOVUS
 cd ${PROJECT_DIR}/backend/layout/work
 ## apenas o programa
-innovus -stylus -overwrite -no_gui
+#innovus -stylus -overwrite -no_gui
 ## programa e carrega script para síntese automatizada
-#innovus -stylus -overwrite -no_gui -files ../scripts/layout.tcl
+innovus -stylus -overwrite -no_gui -files ${PROJECT_DIR}/backend/layout/scripts/layout.tcl
 
 
 

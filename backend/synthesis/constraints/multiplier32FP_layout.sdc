@@ -20,7 +20,7 @@ set_ideal_net [get_nets ${MAIN_RST_NAME}]
 #################################################################################
 ## CLOCK
 #################################################################################
-create_clock -name ${MAIN_CLOCK_NAME} -period $period_clk [get_pins ${MAIN_CLOCK_NAME}]
+create_clock -name ${MAIN_CLOCK_NAME} -period 100.0 [get_pins ${MAIN_CLOCK_NAME}]
 set_clock_uncertainty ${clk_uncertainty} [get_clocks ${MAIN_CLOCK_NAME}]
 set_clock_latency ${clk_latency} [get_clocks ${MAIN_CLOCK_NAME}]
 

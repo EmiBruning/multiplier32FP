@@ -6,7 +6,7 @@
 ./xcelium.d/run.lnx8664.23.09.d
 -RUNMODE
 /home/tools/design_kits/cadence/GPDK045/gsclib045_all_v4.4/gsclib045/verilog/slow_vdd1v0_basicCells.v
-/home/ufsm00291/ufsm00291-bruning2023520081/projetos/multiplier32FP/backend/synthesis/deliverables/multiplier32FP.v
+/home/ufsm00291/ufsm00291-bruning2023520081/projetos/multiplier32FP/backend/layout/work/multiplier32FP_layout_200MHz.v
 multiplier32FP_tb.v
 -CDSLIB
 ./xcelium.d/run.lnx8664.23.09.d/cdsrun.lib

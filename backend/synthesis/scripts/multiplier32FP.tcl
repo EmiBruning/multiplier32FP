@@ -14,7 +14,6 @@ puts "  "
 # Load vriables set in run_first.tcl
 #-----------------------------------------------------------------------------
 source ../../synthesis/scripts/common/variables.tcl
-
 #-----------------------------------------------------------------------------
 # Load Path File
 #-----------------------------------------------------------------------------
@@ -68,24 +67,24 @@ get_db insts .base_cell.name -u ;# List all cell names used in the current desig
 # Preparing and generating output data (reports, verilog netlist)
 #-----------------------------------------------------------------------------
 
-read_stimulus -allow_n_nets -format vcd -file multiplier32FP_500MHz_1000ns.vcd
+read_stimulus -allow_n_nets -format vcd -file multiplier_fis_200MHz_x1.vcd
 set_db power_engine joules ;# <joules or legacy>
 report_sdb_annotation
 report_power -unit uW
-report_power > ${RPT_DIR}/${HDL_NAME}_power_500MHz_x1.rpt
+report_power > ${RPT_DIR}/${HDL_NAME}_power_200MHz_fis_x1.rpt
 
-read_stimulus -allow_n_nets -format vcd -file multiplier32FP_500MHz_2000ns.vcd
+read_stimulus -allow_n_nets -format vcd -file multiplier_fis_200MHz_x2.vcd
 set_db power_engine joules ;# <joules or legacy>
 report_sdb_annotation
 report_power -unit uW
-report_power > ${RPT_DIR}/${HDL_NAME}_power_500MHz_x2.rpt
+report_power > ${RPT_DIR}/${HDL_NAME}_power_200MHz_fis_x2.rpt
 
 
 #report_power > ${RPT_DIR}/${HDL_NAME}_power_500.rpt
 #report_design_rules > ${RPT_DIR}/${HDL_NAME}_drc.rpt
-#report_area > ${RPT_DIR}/${HDL_NAME}_area_500.rpt ;# report_area -detail 
-#report_area -normalize_with_gate NAND2X1 > ${RPT_DIR}/${HDL_NAME}_area_normalized_500.rpt
-#report_timing > ${RPT_DIR}/${HDL_NAME}_timing_slack.rpt
+#report_area > ${RPT_DIR}/${HDL_NAME}_area__10MHz.rpt ;# report_area -detail 
+#report_area -normalize_with_gate NAND2X1 > ${RPT_DIR}/${HDL_NAME}_area_normalized_10MHz.rpt
+#report_timing > ${RPT_DIR}/${HDL_NAME}_timing__10MHz.rpt
 #report_gates > ${RPT_DIR}/${HDL_NAME}_gates.rpt
 #report_qor > ${RPT_DIR}/${HDL_NAME}_qor.rpt
 source ../scripts/common/sdf_width_wa.etf

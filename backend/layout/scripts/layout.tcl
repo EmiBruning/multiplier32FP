@@ -40,10 +40,12 @@ connect_global_net $NET_ONE -type pg_pin -pin VDD -all
 connect_global_net $NET_ZERO -type pg_pin -pin VSS -all
 
 # Cria os anéis de alimentação (Power Rings) ao redor do bloco
-add_rings -nets "$NET_ONE $NET_ZERO" -type core_rings -width 2 -spacing 1 -layer {top 4 bottom 4}
+add_rings -type core_rings -nets "$NET_ONE $NET_ZERO" -follow core -layer {top Metal5 bottom Metal5 left Metal4 right Metal4} -width 2 -spacing 1 -offset 1
 
 # Cria as listras de alimentação verticais (Power Stripes) para alimentar as células padrão
-add_stripes -nets "$NET_ONE $NET_ZERO" -layer 5 -width 1 -spacing 10 -set_to_set_distance 20
+add_stripes -nets "$NET_ONE $NET_ZERO" -layer Metal4 -direction vertical -width 1 -spacing 2 -set_to_set_distance 20
+
+route_special
 
 #=============================================================================
 # 2. PLACEMENT (Espalha as portas lógicas do multiplicador no chip de forma ótima)
@@ -62,5 +64,6 @@ route_design
 #=============================================================================
 # Agora que o design foi posicionado e roteado, extraia os dados com precisão:
 report_design > relatorio_area.rpt
+
 
 

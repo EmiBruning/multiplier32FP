@@ -2,8 +2,11 @@
 // File created by:  xrun
 // Do not modify this file
 //
+-timescale
+1ns/10ps
 -V200X
 -V93
+-IOCONDSORT
 -ACCESS
 +rwc
 -no_analogsolver

@@ -1,7 +1,7 @@
 #######################################################
 #                                                     
 #  Innovus Command Logging File                     
-#  Created on Fri May 29 09:58:27 2026                
+#  Created on Wed Jun 10 11:02:13 2026                
 #                                                     
 #######################################################
 
@@ -95,17 +95,25 @@ init_design
 create_floorplan -core_density_size {1.0 0.6 10 10 10 10}
 connect_global_net $NET_ONE -type pg_pin -pin VDD -all
 connect_global_net $NET_ZERO -type pg_pin -pin VSS -all
-add_rings -nets "$NET_ONE $NET_ZERO" -type core_rings -width 2 -spacing 1 -layer {top 4 bottom 4}
-add_stripes -nets "$NET_ONE $NET_ZERO" -layer 5 -width 1 -spacing 10 -set_to_set_distance 20
+add_rings -type core_rings -nets "$NET_ONE $NET_ZERO" -follow core -layer {top Metal5 bottom Metal5 left Metal4 right Metal4} -width 2 -spacing 1 -offset 1
+add_stripes -nets "$NET_ONE $NET_ZERO" -layer Metal4 -direction vertical -width 1 -spacing 2 -set_to_set_distance 20
+route_special
 place_opt_design
 route_design
 report_design > relatorio_area.rpt
 #@ End verbose source: /home/ufsm00291/ufsm00291-bruning2023520081/projetos/multiplier32FP/backend/layout/scripts/layout.tcl
-llength [get_db insts]
-current_design
-get_db [current_design] .core_bbox
-current_design
-get_db [current_design] .area
-report_timing
-foreach cell [get_db lib_cells *NAND2*] { puts "[get_db $cell .name]: [get_db $cell .area]" }
+get_clocks clk
+get_property [get_clocks clk] period
+report_power
+extract_rc
+report_timing -max_paths 1
+report_area
+report_summary
+gui_show
+gui_select -point {0.04900 0.02900}
+report_area > area_10MHZ_layout.rpt
+report_timing -max_paths 1 > timing_10MHZ_layout.rpt
+report_power > power_10MHz_layout.rpt
+write_netlist multiplier32FP_layout_10MHz.v
+write_sdf multiplier32FP_10MHz.sdf
 exit

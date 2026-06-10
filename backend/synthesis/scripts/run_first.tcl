@@ -19,7 +19,7 @@ export MAIN_CLOCK_NAME=clk
 export MAIN_RST_NAME=rst_n
 export BEST_LIB_OPERATING_CONDITION=PVT_1P32V_0C ;# see LEF files
 export WORST_LIB_OPERATING_CONDITION=PVT_0P9V_125C ;# see LEF files
-export period_clk=100 ns ;# (100 ns = 10 MHz) (10 ns = 100 MHz) (2 ns = 500 MHz) (1 ns = 1 GHz)
+export period_clk= 100.0 ;# (100 ns = 10 MHz) (10 ns = 100 MHz) (2 ns = 500 MHz) (1 ns = 1 GHz)
 export clk_uncertainty=0.05 ;# ns (“a guess”)
 export clk_latency=0.10 ;# ns (“a guess”)
 export in_delay=0.30 ;# ns
@@ -81,22 +81,24 @@ module add cdn/innovus/innovus211
 ### run netlist (logic synthesis) with compiled SDF 
 #xrun -clean -timescale 1ns/10ps -mess -64bit -v200x -v93 -iocondsort ${TECH_DIR}/gsclib045_all_v4.4/gsclib045/verilog/slow_vdd1v0_basicCells.v ${PROJECT_DIR}/backend/synthesis/deliverables/${DESIGNS}.v ${DESIGNS}_tb.v -top ${DESIGNS}_tb -access +rwc -sdf_cmd_file ${PROJECT_DIR}/frontend/sdf_cmd_file.cmd -clean -gui 
 
+### run netlist (fisico synthesis) with compiled SDF 
+#xrun -clean -timescale 1ns/10ps -mess -64bit -v200x -v93 -iocondsort ${TECH_DIR}/gsclib045_all_v4.4/gsclib045/verilog/slow_vdd1v0_basicCells.v ${PROJECT_DIR}/backend/layout/work/${DESIGNS}_layout_200MHz.v ${DESIGNS}_tb.v -top ${DESIGNS}_tb -access +rwc -clean -gui
 
 # Para executar o GENUS
 cd ${PROJECT_DIR}/backend/synthesis/work
 ## apenas o programa
 #genus -abort_on_error -lic_startup Genus_Synthesis -lic_startup_options Genus_Physical_Opt -log genus -overwrite
 # programa e carrega script para síntese automatizada
-#genus -abort_on_error -lic_startup Genus_Synthesis -lic_startup_options Genus_Physical_Opt -log genus -overwrite -files ${PROJECT_DIR}/backend/synthesis/scripts/${DESIGNS}.tcl
+genus -abort_on_error -lic_startup Genus_Synthesis -lic_startup_options Genus_Physical_Opt -log genus -overwrite -files ${PROJECT_DIR}/backend/synthesis/scripts/${DESIGNS}.tcl
 
 #cd ${PROJECT_DIR}/backend/synthesis/script
 
 # Para executar o INNOVUS
-cd ${PROJECT_DIR}/backend/layout/work
+#cd ${PROJECT_DIR}/backend/layout/work
 ## apenas o programa
 #innovus -stylus -overwrite -no_gui
 ## programa e carrega script para síntese automatizada
-innovus -stylus -overwrite -no_gui -files ${PROJECT_DIR}/backend/layout/scripts/layout.tcl
+#innovus -stylus -overwrite -files ${PROJECT_DIR}/backend/layout/scripts/layout.tcl
 
 
 
